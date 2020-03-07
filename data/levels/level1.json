@@ -1,0 +1,37 @@
+{
+  "tiles": [
+    {"type":"g", "position":[0,0], "dirs":[0,0,0,0]},
+    {"type":"s", "position":[1,0], "dirs":[0,0,1,0]},
+    {"type":"g", "position":[2,0], "dirs":[0,0,0,0]},
+    {"type":"g", "position":[3,0], "dirs":[0,0,0,0]},
+    {"type":"g", "position":[4,0], "dirs":[0,0,0,0]},
+    {"type":"g", "position":[5,0], "dirs":[0,0,0,0]},
+    {"type":"g", "position":[0,1], "dirs":[0,0,0,0]},
+    {"type":"s", "position":[1,1], "dirs":[1,0,1,0]},
+    {"type":"g", "position":[2,1], "dirs":[0,0,0,0]},
+    {"type":"g", "position":[3,1], "dirs":[0,0,0,0]},
+    {"type":"g", "position":[4,1], "dirs":[0,0,0,0]},
+    {"type":"g", "position":[5,1], "dirs":[0,0,0,0]},
+    {"type":"s", "position":[0,2], "dirs":[0,1,0,0]},
+    {"type":"s", "position":[1,2], "dirs":[1,1,1,1]},
+    {"type":"s", "position":[2,2], "dirs":[0,1,0,1]},
+    {"type":"s", "position":[3,2], "dirs":[0,1,0,1]},
+    {"type":"s", "position":[4,2], "dirs":[0,1,0,1]},
+    {"type":"s", "position":[5,2], "dirs":[0,1,0,1]}],
+  "buildings":[
+    {"position":[3,1], "image":"bld0.png", "size":[1,1]},
+    {"position":[5,0], "image":"bld1.png", "size":[1,1]},
+    {"position":[4,1], "image":"bld2.png", "size":[1,1]},
+    {"position":[2,0], "image":"bld3.png", "size":[2,1]}
+  ],
+  "env_elements":[
+    {"image":"cloud0.png"},
+    {"image":"cloud1.png"},
+    {"image":"cloud2.png"}
+  ],
+  "citizens":[
+    {"image":"ch0.png"},
+    {"image":"ch1.png"}
+  ],
+  "characters":[]
+}
