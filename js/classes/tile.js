@@ -1,7 +1,8 @@
 
 class Tile {
 
-  constructor(container, canv_data, image_file, position) {
+  constructor(container, canv_data, image_file, position, tile_id) {
+    this.id = tile_id
     this.image = image_file;
     this.container = container;
     this.position = position;
@@ -24,8 +25,8 @@ class Tile {
 
 class StreetTile extends Tile {
 
-  constructor(container, canv_data, image_file, position, directions) {
-    super (container, canv_data, image_file, position);
+  constructor(container, canv_data, image_file, position, directions, tile_id) {
+    super (container, canv_data, image_file, position, tile_id);
     this.directions = directions;
     this.neighborTiles = [null, null, null, null];
   }

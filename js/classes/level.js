@@ -16,7 +16,7 @@ class Level {
     this.canvData.stage.addChild(this.tilesContainer);
   }
 
-  load () {
+  load (callback) {
 
     // initiating the grid
     for (var i=0; i<this.canvData.gridX; i++) {
@@ -37,7 +37,8 @@ class Level {
             this.tilesContainer,
             this.canvData,
             image_file,
-            t.position
+            t.position,
+            'tile' + i
         )
       } else if (t.type == 's') {
         let image_file =
@@ -47,7 +48,8 @@ class Level {
             this.canvData,
             image_file,
             t.position,
-            t.dirs
+            t.dirs,
+            'tile' + i
         )
         this.streetTilesList.push(tile);
       }
@@ -60,11 +62,20 @@ class Level {
 
   }
 
+  getTileById (x,y) {
+    if (typeof this.tiles[x][y] !== 'undefined') return this.tiles[x][y];
+    return null;
+  }
+
   addCitizens() {
     for (var i=0; i<this.citizens_data.length; i++) {
       let image_file =
         this.canvData.dirs.assetsCharDir + this.citizens_data[i].image;
-      var citizen = new Citizen(this.tilesContainer, this.canvData, image_file);
+      var citizen = new Citizen(this.tilesContainer,
+                                this.canvData,
+                                image_file,
+                                this,
+                                'citizen' + i);
       var rand_tid = Math.floor(Math.random() * (this.streetTilesList.length-1));
       var attach_tile = this.streetTilesList[rand_tid];
       citizen.addToContainer(attach_tile);
