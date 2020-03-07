@@ -15,6 +15,7 @@ class Level {
     this.tilesContainer = new PIXI.Container();
     this.canvData.stage.addChild(this.tilesContainer);
     this.character = null;
+    this.maxWrongCollisions = 2;
   }
 
   load (callback) {

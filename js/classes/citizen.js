@@ -169,6 +169,8 @@ class Character extends Citizen {
     super (container, canv_data, image_file, level, 'player', false);
 
     this.pkeys = -1;
+    this.collisions = [];
+
     var self = this;
 
     window.onkeydown = function (e) {
@@ -187,6 +189,26 @@ class Character extends Citizen {
   decideNextMove() {
     this.currentTile = this.nextTile;
     this.nextTile = null;
+  }
+
+  // detect citizen collition
+  detectCitizenCollision () {
+    var citizens = this.level.citizens;
+    for (var i=0; i<citizens.length; i++) {
+      if (this.currentTile === citizens[i].currentTile) {
+        if (citizens[i].target) {
+          console.log("WELL DONE");
+        } else {
+          if (this.collisions.indexOf(citizens[i]) === -1) {
+            this.collisions.push (citizens[i]);
+            citizens[i].sprite.alpha = 0.5;
+            if (this.collisions.length >= this.level.maxWrongCollisions) {
+              console.log("GAME OVER");
+            }
+          }
+        }
+      }
+    }
   }
 
   // override
@@ -230,7 +252,8 @@ class Character extends Citizen {
         }
       }
       this.rotateElementByDirId();
-      this.setPosition();
+      this.setPosition(1.2);
+      this.detectCitizenCollision();
       if (this.nextTile) this.detectTileColision()
     }
 
