@@ -76,7 +76,7 @@ class Level {
                                 image_file,
                                 this,
                                 'citizen' + i);
-      var rand_tid = Math.floor(Math.random() * (this.streetTilesList.length-1));
+      var rand_tid = Math.floor(Math.random() * (this.streetTilesList.length));
       var attach_tile = this.streetTilesList[rand_tid];
       citizen.addToContainer(attach_tile);
       this.citizens.push (citizen);
@@ -104,7 +104,7 @@ class Level {
                                 this.canvData,
                                 image_file,
                                 [0,1,0,(2+i)%2],0.5);
-      let randX = Math.floor(Math.random() * (this.canvData.gridX-1));
+      let randX = Math.floor(Math.random() * (this.canvData.gridX));
       var position = [randX, (i+1) * Math.round(this.canvData.gridX/(this.envelements_data.length+4.5))];
       cloud.addToContainer(position);
       this.envElements.push(cloud);

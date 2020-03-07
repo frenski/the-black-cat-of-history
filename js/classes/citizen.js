@@ -63,7 +63,7 @@ class Citizen {
       if (tile.directions[i] == 1) pos_dir.push(i);
     }
     // console.log(pos_dir, tile.position);
-    var randDir = pos_dir[Math.floor(Math.random() * (pos_dir.length-1))];
+    var randDir = pos_dir[Math.floor(Math.random() * (pos_dir.length))];
     this.setDir (randDir);
   }
 
@@ -83,27 +83,18 @@ class Citizen {
   }
 
   decideNextMove () {
-    if (this.id == 'citizen0') {
-      console.log("DECIDING");
-    }
+    // if (this.id == 'citizen0') {
+    //   console.log("DECIDING");
+    // }
     var x = this.currentTile.position[0];
     var y = this.currentTile.position[1];
-    if (this.id == 'citizen0') {
-      console.log(this.currentTile.directions, this.moveDirectionId);
-    }
     if (JSON.stringify(this.currentTile.directions) == JSON.stringify([1, 0, 1, 0])) {
-      if (this.id == 'citizen0') {
-        console.log("1, 0, 1, 0");
-      }
       if (this.moveDirectionId == 0) {
         this.nextTile = this.level.getTileById (x, y-1);
       } else if (this.moveDirectionId == 2) {
         this.nextTile = this.level.getTileById (x, y+1);
       }
     } else if (JSON.stringify(this.currentTile.directions) == JSON.stringify([0, 1, 0, 1])) {
-      if (this.id == 'citizen0') {
-        console.log("1, 0, 1, 0");
-      }
       if (this.moveDirectionId == 1) {
         this.nextTile = this.level.getTileById (x+1, y);
       } else if (this.moveDirectionId == 3) {
@@ -138,9 +129,9 @@ class Citizen {
     var curTileOverlap = (Math.max(c_l,e_l) - Math.min(c_r,e_r))*(Math.max(c_t,e_t) - Math.min(c_b,e_b));
     var newTileOverlap = (Math.max(n_l,n_l) - Math.min(n_r,e_r))*(Math.max(n_t,e_t) - Math.min(n_b,e_b));
     if (newTileOverlap > (curTileOverlap * 20)) {
-      if (this.id == 'citizen0') {
-        console.log(this.currentTile.id, this.nextTile.id);
-      }
+      // if (this.id == 'citizen0') {
+      //   console.log(this.currentTile.id, this.nextTile.id);
+      // }
       this.currentTile = this.nextTile;
       // console.log(this.currentTile.position);
       this.nextTile = null;
