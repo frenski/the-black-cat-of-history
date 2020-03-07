@@ -9,7 +9,8 @@ const assetsBuildDir = assetsDir + 'buildings/';
 const assetsEnvDir = assetsDir + 'env/';
 const dataDir = rootUrl + 'data/';
 const dataLevelsDir = rootUrl + 'data/levels/';
-const backCol = 0xc0f2f9;
+const backCol = 0x8fd9ae;
+const offsetSize = [25,0];
 
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -17,8 +18,8 @@ document.addEventListener("DOMContentLoaded", function() {
   var canvasContainerEl = document.getElementById('canvas-container');
   // var canvasEl = document.getElementById('main-canvas');
 
-  var canvW = canvasContainerEl.offsetWidth;
-  var canvH = canvW * canvasSizeRatio;
+  var canvW = canvasContainerEl.offsetWidth  - offsetSize[0];
+  var canvH = canvW * canvasSizeRatio  - offsetSize[1];
   canvasContainerEl.style.height = canvH + 'px';
 
   var pixRatio = window.devicePixelRatio;
@@ -59,9 +60,9 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   var resize = function() {
-      app.renderer.view.style.width = canvasContainerEl.clientWidth + 'px';
+      app.renderer.view.style.width = canvasContainerEl.clientWidth - offsetSize[0] + 'px';
       app.renderer.view.style.height =
-      canvasContainerEl.clientWidth * canvasSizeRatio + 'px';
+      canvasContainerEl.clientWidth * canvasSizeRatio - offsetSize[1] + 'px';
   }
   window.onresize = resize;
 

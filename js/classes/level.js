@@ -103,11 +103,9 @@ class Level {
       var cloud = new Cloud(this.tilesContainer,
                                 this.canvData,
                                 image_file,
-                                [0,1,0,(2+i)%2],
-                                0.5);
-
+                                [0,1,0,(2+i)%2],0.5);
       let randX = Math.floor(Math.random() * (this.canvData.gridX-1));
-      var position = [randX, (i+1) * Math.round(this.canvData.gridX/(this.envelements_data.length+3))];
+      var position = [randX, (i+1) * Math.round(this.canvData.gridX/(this.envelements_data.length+4.5))];
       cloud.addToContainer(position);
       this.envElements.push(cloud);
     }
