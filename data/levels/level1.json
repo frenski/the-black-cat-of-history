@@ -366,9 +366,16 @@
   ],
   "buildings":[
     {"position":[2,2], "image":"bld0.png", "size":[6,3]},
-    {"position":[5,0], "image":"bld1.png", "size":[1,1]},
-    {"position":[4,1], "image":"bld2.png", "size":[1,1]},
-    {"position":[2,0], "image":"bld3.png", "size":[2,1]}
+    {"position":[9,2], "image":"bld1.png", "size":[7,4]},
+    {"position":[18,1], "image":"bld2.png", "size":[6,4]},
+    {"position":[2,6],"image":"bld3.png","size":[4,3]},
+    {"position":[9,5],"image":"bld4.png","size":[7,4]},
+    {"position":[17,7],"image":"bld5.png","size":[2,1]},
+    {"position":[21,6],"image":"bld6.png","size":[5,4]},
+    {"position":[2,9],"image":"bld7.png","size":[4,4]},
+    {"position":[9,10],"image":"bld8.png","size":[3,3]},
+    {"position":[17,10],"image":"bld9.png","size":[3,3]},
+    {"position":[23,10],"image":"bld10.png","size":[3,3]}
   ],
   "env_elements":[
     {"image":"cloud0.png"},
@@ -376,8 +383,9 @@
     {"image":"cloud2.png"}
   ],
   "citizens":[
-    {"image":"ch0.png"},
-    {"image":"ch1.png"}
+    {"image":"person2.png", "target":false},
+    {"image":"person3.png", "target":false},
+    {"image":"hitler.png", "target":true}
   ],
-  "characters":[]
+  "characters":[{"image":"cat.png"}]
 }

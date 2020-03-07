@@ -14,6 +14,7 @@ class Level {
     this.canvData = canv_data;
     this.tilesContainer = new PIXI.Container();
     this.canvData.stage.addChild(this.tilesContainer);
+    this.character = null;
   }
 
   load (callback) {
@@ -75,7 +76,8 @@ class Level {
                                 this.canvData,
                                 image_file,
                                 this,
-                                'citizen' + i);
+                                'citizen' + i,
+                                this.citizens_data[i].target);
       var rand_tid = Math.floor(Math.random() * (this.streetTilesList.length));
       var attach_tile = this.streetTilesList[rand_tid];
       citizen.addToContainer(attach_tile);
@@ -111,6 +113,18 @@ class Level {
     }
   }
 
+  addCharacter() {
+    let image_file =
+      this.canvData.dirs.assetsCharDir + this.characters_data[0].image;
+    this.character = new Character(this.tilesContainer,
+                              this.canvData,
+                              image_file,
+                              this);
+    var rand_tid = Math.floor(Math.random() * (this.streetTilesList.length));
+    var attach_tile = this.streetTilesList[rand_tid];
+    this.character.addToContainer(attach_tile);
+  }
+
   moveElements () {
     // console.log('moving elements');
     for (var i=0; i<this.envElements.length; i++) {
@@ -120,6 +134,8 @@ class Level {
     for (var i=0; i<this.citizens.length; i++) {
       this.citizens[i].moveElement();
     }
+
+    this.character.moveElement()
 
   }
 

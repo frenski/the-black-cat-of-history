@@ -107,6 +107,7 @@ document.addEventListener("DOMContentLoaded", function() {
       levels.push (level1);
       level1.load();
       level1.addCitizens();
+      level1.addCharacter();
       level1.addBuildings();
       level1.addEnvElements();
 

@@ -1,6 +1,6 @@
 class Citizen {
 
-  constructor(container, canv_data, image_file, level, cit_id) {
+  constructor(container, canv_data, image_file, level, cit_id, target=false) {
     this.id = cit_id
     this.image = image_file;
     this.container = container;
@@ -15,6 +15,7 @@ class Citizen {
     this.pace = 1;
     this.level = level;
     this.allowReturn = false;
+    this.target = target;
   }
 
   rotateElement(angle) {
@@ -83,9 +84,8 @@ class Citizen {
   }
 
   decideNextMove () {
-    // if (this.id == 'citizen0') {
-    //   console.log("DECIDING");
-    // }
+    this.currentTile = this.nextTile;
+    this.nextTile = null;
     var x = this.currentTile.position[0];
     var y = this.currentTile.position[1];
     if (JSON.stringify(this.currentTile.directions) == JSON.stringify([1, 0, 1, 0])) {
@@ -101,9 +101,6 @@ class Citizen {
         this.nextTile = this.level.getTileById (x-1, y);
       }
     } else {
-      if (this.id == 'citizen0') {
-        console.log("assigning random");
-      }
       this.setRandomDirByTile(this.currentTile);
     }
   }
@@ -129,18 +126,12 @@ class Citizen {
     var curTileOverlap = (Math.max(c_l,e_l) - Math.min(c_r,e_r))*(Math.max(c_t,e_t) - Math.min(c_b,e_b));
     var newTileOverlap = (Math.max(n_l,n_l) - Math.min(n_r,e_r))*(Math.max(n_t,e_t) - Math.min(n_b,e_b));
     if (newTileOverlap > (curTileOverlap * 20)) {
-      // if (this.id == 'citizen0') {
-      //   console.log(this.currentTile.id, this.nextTile.id);
-      // }
-      this.currentTile = this.nextTile;
-      // console.log(this.currentTile.position);
-      this.nextTile = null;
       this.decideNextMove();
     }
   }
 
-  moveElement(new_pace) {
-    // console.log(pace);
+  setPosition(new_pace) {
+
     var p = this.pace;
     if (typeof new_pace !== 'undefined') {
       p = new_pace;
@@ -161,6 +152,11 @@ class Citizen {
         break;
     }
 
+  }
+
+  moveElement(new_pace) {
+
+    this.setPosition(new_pace)
     if (this.nextTile) this.detectTileColision();
 
   }
@@ -169,8 +165,76 @@ class Citizen {
 
 class Character extends Citizen {
 
-  constructor(container, canv_data, image_file) {
-    super (container, canv_data, image_file);
+  constructor(container, canv_data, image_file, level) {
+    super (container, canv_data, image_file, level, 'player', false);
+
+    this.pkeys = -1;
+    var self = this;
+
+    window.onkeydown = function (e) {
+      var code = e.keyCode ? e.keyCode : e.which;
+      self.pkeys = code;
+      return false;
+    }
+    window.onkeyup = function (e) {
+      self.pkeys = -1;
+      return false;
+    };
+
+  }
+
+  // override
+  decideNextMove() {
+    this.currentTile = this.nextTile;
+    this.nextTile = null;
+  }
+
+  // override
+  moveElement() {
+
+    var self = this;
+
+    var setNextTile = function (x, y) {
+      self.nextTile = self.level.getTileById(x, y)
+    }
+
+    var x = this.currentTile.position[0];
+    var y = this.currentTile.position[1];
+
+    if (this.pkeys == 37 || this.pkeys == 38 || this.pkeys == 39 || this.pkeys == 40) {
+      if (this.pkeys == 38) {
+        if (this.currentTile.directions[0]) {
+          this.moveDirectionId = 0;
+          setNextTile (x, y-1);
+        }
+        // console.log("UP");
+      }
+      if (this.pkeys == 40) {
+        if (this.currentTile.directions[2]) {
+          this.moveDirectionId = 2;
+          setNextTile (x, y+1);
+        }
+        // console.log("DOWN")
+      }
+      if (this.pkeys == 39) {
+        if (this.currentTile.directions[1]) {
+          this.moveDirectionId = 1;
+          setNextTile (x+1, y);
+        }
+        // console.log("RIGHT")
+      }
+      if (this.pkeys == 37) {
+        if (this.currentTile.directions[3]) {
+          this.moveDirectionId = 3;
+          setNextTile (x-1, y);
+        }
+      }
+      this.rotateElementByDirId();
+      this.setPosition();
+      if (this.nextTile) this.detectTileColision()
+    }
+
+
   }
 
   changeNextMove(direction) {
