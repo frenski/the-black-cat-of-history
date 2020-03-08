@@ -135,7 +135,8 @@ class Level {
                                 image_file,
                                 [0,1,0,(2+i)%2],0.5);
       let randX = Math.floor(Math.random() * (this.canvData.gridX));
-      var position = [randX, (i+1) * Math.round(this.canvData.gridX/(this.envelements_data.length+4.5))];
+      var position = [randX,
+        (i+1) * Math.round(this.canvData.gridX/(this.envelements_data.length+4.5))];
       cloud.addToContainer(position);
       this.envElements.push(cloud);
     }
@@ -168,7 +169,9 @@ class Level {
   }
 
   levelOver () {
-    this.ui.showModalGO('<h1>GAME OVER</h1><h2>You failed to jinx '+this.target.name+'</h2><div class="main-message">History will <br>repeat itself</div><a href="game.html" class="button-playgain">Play agian</a>');
+    this.ui.showModalGO('<h1>GAME OVER</h1><h2>You failed to jinx '+
+      this.target.name+'</h2><div class="main-message">History will <br>'+
+        'repeat itself</div><a href="index.html" class="button-playgain">Play agian</a>');
   }
 
   levelSuccesChoice () {
@@ -186,7 +189,8 @@ class Level {
         self.ui.closeModalRect();
         self.ui.showModalInfoMedia('The world after 1907',
           '<video width="100%" controls><source src="assets/scenarios/'+
-            self.scenarios[0].video+'" type="video/mp4"></video>');
+            self.scenarios[0].video+
+            '" type="video/mp4"></video><a href="index.html">Play again</a>');
       });
 
       var scblock2 = document.getElementById('scenario-block1');
@@ -194,7 +198,8 @@ class Level {
         self.ui.closeModalRect();
         self.ui.showModalInfoMedia('The world after 1907',
           '<video width="100%" controls><source src="assets/scenarios/'+
-            self.scenarios[1].video+'" type="video/mp4"></video>');
+            self.scenarios[1].video+
+            '" type="video/mp4"></video><a href="index.html">Play again</a>');
       });
 
   }

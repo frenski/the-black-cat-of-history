@@ -123,8 +123,10 @@ class Citizen {
     var e_r = e.position.x + e.width/2;
     var e_b = e.position.y + e.height/2;
 
-    var curTileOverlap = (Math.max(c_l,e_l) - Math.min(c_r,e_r))*(Math.max(c_t,e_t) - Math.min(c_b,e_b));
-    var newTileOverlap = (Math.max(n_l,n_l) - Math.min(n_r,e_r))*(Math.max(n_t,e_t) - Math.min(n_b,e_b));
+    var curTileOverlap =
+      (Math.max(c_l,e_l) - Math.min(c_r,e_r))*(Math.max(c_t,e_t) - Math.min(c_b,e_b));
+    var newTileOverlap =
+      (Math.max(n_l,n_l) - Math.min(n_r,e_r))*(Math.max(n_t,e_t) - Math.min(n_b,e_b));
     if (newTileOverlap > (curTileOverlap * 20)) {
       this.decideNextMove();
     }
@@ -204,10 +206,11 @@ class Character extends Citizen {
           }
         } else {
           if (this.collisions.indexOf(citizens[i]) === -1) {
+            var heart = this.level.hearts.pop();
             this.collisions.push (citizens[i]);
             citizens[i].sprite.alpha = 0.5;
-            this.level.hearts[i].alpha = 0.5;
-            this.level.hearts[i].tint = 0xCCCCCC;
+            heart.alpha = 0.5;
+            heart.tint = 0xCCCCCC;
             if (this.collisions.length >= this.level.maxWrongCollisions) {
               this.level.levelOver();
               console.log("GAME OVER");

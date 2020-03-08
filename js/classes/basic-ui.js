@@ -5,7 +5,7 @@ class GameUI {
     this.modalRect = new tingle.modal({
       footer: true,
       stickyFooter: false,
-      closeMethods: ['overlay', 'button', 'escape'],
+      closeMethods: [],
       closeLabel: "Close",
       cssClass: ['modal-rect']
     });
@@ -13,7 +13,7 @@ class GameUI {
     this.modalSplash = new tingle.modal({
       footer: true,
       stickyFooter: false,
-      closeMethods: ['overlay', 'button', 'escape'],
+      closeMethods: [],
       closeLabel: "Close",
       cssClass: ['modal-splash']
     });

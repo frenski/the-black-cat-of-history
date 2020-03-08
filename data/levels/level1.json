@@ -383,8 +383,11 @@
     {"image":"cloud2.png"}
   ],
   "citizens":[
+    {"image":"person1.png", "target":false},
     {"image":"person2.png", "target":false},
     {"image":"person3.png", "target":false},
+    {"image":"person4.png", "target":false},
+    {"image":"person6.png", "target":false},
     {"image":"hitler.png", "target":true, "name": "Hitler"}
   ],
   "characters":[{"image":"cat.png"}],
