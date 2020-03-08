@@ -205,6 +205,7 @@ class Character extends Citizen {
             this.level.hearts[i].alpha = 0.5;
             this.level.hearts[i].tint = 0xCCCCCC;
             if (this.collisions.length >= this.level.maxWrongCollisions) {
+              this.level.levelOver();
               console.log("GAME OVER");
             }
           }

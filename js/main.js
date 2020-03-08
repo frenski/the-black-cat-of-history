@@ -93,6 +93,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function onAssetsLoaded() {
 
+    var ui = new GameUI();
+
     loadLevelData(1, function (ldata){
       // Setting up level 1
       var tiles1 = ldata.tiles;
@@ -105,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             citizens1,
                             characters1,
                             envelements1,
-                            canvasData);
+                            canvasData, ui);
       levels.push (level1);
       level1.load();
       level1.addCitizens();

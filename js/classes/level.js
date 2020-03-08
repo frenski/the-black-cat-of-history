@@ -1,6 +1,6 @@
 class Level {
 
-  constructor (tiles, buildings, citizens, characters, envelements, canv_data) {
+  constructor (tiles, buildings, citizens, characters, envelements, canv_data, ui) {
     this.tiles_data = tiles;
     this.tiles = [];
     this.streetTilesList = [];
@@ -19,6 +19,7 @@ class Level {
     this.heartsContainer = new PIXI.Container();
     this.hearts = [];
     this.target = null;
+    this.ui = ui;
   }
 
   load (callback) {
@@ -161,6 +162,17 @@ class Level {
 
     this.character.moveElement()
 
+  }
+
+  levelOver () {
+    this.ui.showModalGO('<h1>GAME OVER</h1><h2>You failed to jinx '+this.target.name+'</h2><div class="main-message">History will <br>repeat itself</div><a href="game.html" class="button-playgain">Play agian</a>');
+  }
+
+  levelSuccesChoice () {
+    this.ui.showModalBinaryChoice(
+      'You caught ' + this.target.name + '! Choose his bad luch today!',
+
+    );
   }
 
 }
