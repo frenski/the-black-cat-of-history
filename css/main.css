@@ -57,6 +57,7 @@ body {
   width: 60%;
   margin: auto;
   margin-top: -1%;
+  position: relative;
 }
 
 #label-home {
