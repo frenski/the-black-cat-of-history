@@ -24,7 +24,7 @@ class Citizen {
 
   rotateElementByDirId () {
     var angle = (Math.PI*2)*(0.25*this.moveDirectionId);
-    this.rotateElement(angle);
+    // this.rotateElement(angle);
   }
 
   setDir (dirId) {

@@ -27,14 +27,6 @@ class Level {
 
   load (callback) {
 
-        this.ui.showModalBinaryChoice(
-          "Well done!",
-          "You jinxed Hitler! Choose his bad luch today!",
-          '<img src="assets/scenarios/'+this.scenarios[0].icon+'">',
-          '<img src="assets/scenarios/'+this.scenarios[1].icon+'">',
-          this.scenarios[0].text,
-          this.scenarios[1].text);
-
     // initiating the grid
     for (var i=0; i<this.canvData.gridX; i++) {
       this.tiles[i] = [];
@@ -171,7 +163,7 @@ class Level {
       this.citizens[i].moveElement();
     }
 
-    this.character.moveElement()
+    this.character.moveElement();
 
   }
 
@@ -180,8 +172,31 @@ class Level {
   }
 
   levelSuccesChoice () {
-    console.log("AAAA");
-    this.ui.showModalBinaryChoice('You jinxed ' + this.target.name + '!', 'Choose his bad luck today!');
+    var self = this;
+    this.ui.showModalBinaryChoice(
+      "Well done!",
+      "You jinxed Hitler! Choose his bad luch today!",
+      '<img src="assets/scenarios/'+this.scenarios[0].icon+'">',
+      '<img src="assets/scenarios/'+this.scenarios[1].icon+'">',
+      this.scenarios[0].text,
+      this.scenarios[1].text);
+
+      var scblock1 = document.getElementById('scenario-block1');
+      scblock1.addEventListener("click", function(){
+        self.ui.closeModalRect();
+        self.ui.showModalInfoMedia('The world after 1907',
+          '<video width="100%" controls><source src="assets/scenarios/'+
+            self.scenarios[0].video+'" type="video/mp4"></video>');
+      });
+
+      var scblock2 = document.getElementById('scenario-block1');
+      scblock1.addEventListener("click", function(){
+        self.ui.closeModalRect();
+        self.ui.showModalInfoMedia('The world after 1907',
+          '<video width="100%" controls><source src="assets/scenarios/'+
+            self.scenarios[1].video+'" type="video/mp4"></video>');
+      });
+
   }
 
 }
