@@ -30,6 +30,8 @@ body {
 #home-container {
   width: 90%;
   margin:auto;
+  text-align: center;
+  color: white;
 }
 
 #home-container img{
