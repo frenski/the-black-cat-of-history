@@ -16,6 +16,9 @@ class Level {
     this.canvData.stage.addChild(this.tilesContainer);
     this.character = null;
     this.maxWrongCollisions = 2;
+    this.heartsContainer = new PIXI.Container();
+    this.hearts = [];
+    this.target = null;
   }
 
   load (callback) {
@@ -30,7 +33,7 @@ class Level {
 
     // Creating  tile instances
     for (var i=0; i<this.tiles_data.length; i++) {
-      var tile = null;
+      let tile = null;
       let t = this.tiles_data[i];
       if (t.type == 'g') {
         let image_file =
@@ -62,6 +65,25 @@ class Level {
       }
     }
 
+    // Creating hearts
+    let hSize = Math.round ((this.canvData.width/this.canvData.gridX)*0.7);
+    let heart_image =
+      this.canvData.dirs.assetsUiDir + 'heart.png';
+    let heart_padd_coeff = 1.3;
+    for (var i=0; i<this.maxWrongCollisions; i++) {
+      let tex = PIXI.Texture.from(heart_image);
+      let heart = new PIXI.Sprite(tex);
+      this.hearts.push(heart);
+      this.heartsContainer.addChild(heart);
+      heart.position.x = i*hSize*heart_padd_coeff;
+      heart.position.y = hSize*0.25;
+      heart.width = hSize;
+      heart.height = hSize;
+    }
+    this.canvData.stage.addChild (this.heartsContainer);
+    this.heartsContainer.position.x =
+      this.canvData.width - this.maxWrongCollisions * hSize * heart_padd_coeff - heart_padd_coeff;
+    this.heartsContainer.position.y = 0;
   }
 
   getTileById (x,y) {
@@ -83,6 +105,7 @@ class Level {
       var attach_tile = this.streetTilesList[rand_tid];
       citizen.addToContainer(attach_tile);
       this.citizens.push (citizen);
+      if (this.citizens_data[i].target) this.target = this.citizens_data[i];
     }
   }
 

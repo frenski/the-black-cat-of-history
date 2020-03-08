@@ -385,7 +385,7 @@
   "citizens":[
     {"image":"person2.png", "target":false},
     {"image":"person3.png", "target":false},
-    {"image":"hitler.png", "target":true}
+    {"image":"hitler.png", "target":true, "name": "Hitler"}
   ],
   "characters":[{"image":"cat.png"}]
 }

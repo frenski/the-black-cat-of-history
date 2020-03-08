@@ -12,7 +12,7 @@ class Citizen {
     this.moveDirection = [0,0,0,0];
     this.moveDirectionId = -1;
     this.sprite.anchor.set(0.5);
-    this.pace = 1;
+    this.pace = 0.6;
     this.level = level;
     this.allowReturn = false;
     this.target = target;
@@ -202,6 +202,8 @@ class Character extends Citizen {
           if (this.collisions.indexOf(citizens[i]) === -1) {
             this.collisions.push (citizens[i]);
             citizens[i].sprite.alpha = 0.5;
+            this.level.hearts[i].alpha = 0.5;
+            this.level.hearts[i].tint = 0xCCCCCC;
             if (this.collisions.length >= this.level.maxWrongCollisions) {
               console.log("GAME OVER");
             }
@@ -252,7 +254,7 @@ class Character extends Citizen {
         }
       }
       this.rotateElementByDirId();
-      this.setPosition(1.2);
+      this.setPosition(0.7);
       this.detectCitizenCollision();
       if (this.nextTile) this.detectTileColision()
     }

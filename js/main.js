@@ -7,6 +7,7 @@ const assetsTilesDir = assetsDir + 'tiles/';
 const assetsCharDir = assetsDir + 'characters/';
 const assetsBuildDir = assetsDir + 'buildings/';
 const assetsEnvDir = assetsDir + 'env/';
+const assetsUiDir = assetsDir + 'ui/';
 const dataDir = rootUrl + 'data/';
 const dataLevelsDir = rootUrl + 'data/levels/';
 const backCol = 0x8fd9ae;
@@ -55,7 +56,8 @@ document.addEventListener("DOMContentLoaded", function() {
       'assetsTilesDir': assetsTilesDir,
       'assetsCharDir': assetsCharDir,
       'assetsBuildDir': assetsBuildDir,
-      'assetsEnvDir': assetsEnvDir
+      'assetsEnvDir': assetsEnvDir,
+      'assetsUiDir': assetsUiDir
     }
   }
 
