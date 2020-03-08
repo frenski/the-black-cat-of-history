@@ -197,7 +197,11 @@ class Character extends Citizen {
     for (var i=0; i<citizens.length; i++) {
       if (this.currentTile === citizens[i].currentTile) {
         if (citizens[i].target) {
-          console.log("WELL DONE");
+          if (!this.level.caught) {
+            this.level.caught = true;
+            this.level.levelSuccesChoice();
+            console.log("WELL DONE");
+          }
         } else {
           if (this.collisions.indexOf(citizens[i]) === -1) {
             this.collisions.push (citizens[i]);

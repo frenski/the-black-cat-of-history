@@ -387,5 +387,9 @@
     {"image":"person3.png", "target":false},
     {"image":"hitler.png", "target":true, "name": "Hitler"}
   ],
-  "characters":[{"image":"cat.png"}]
+  "characters":[{"image":"cat.png"}],
+  "scenarios":[
+    {"icon":"spuvane.png", "video":"hitler-scientist.mp4", "text": "Make sure someone trips him over and injures him forever"},
+    {"icon":"lista.png", "video":"hitler-artist.mp4", "text": "Make him lose the folders with new world order master plan "}
+  ]
 }

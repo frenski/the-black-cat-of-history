@@ -1,6 +1,7 @@
 class Level {
 
-  constructor (tiles, buildings, citizens, characters, envelements, canv_data, ui) {
+  constructor (tiles, buildings, citizens, characters,
+              envelements, scenarios, canv_data, ui) {
     this.tiles_data = tiles;
     this.tiles = [];
     this.streetTilesList = [];
@@ -12,6 +13,7 @@ class Level {
     this.envElements = [];
     this.buildings_data = buildings;
     this.canvData = canv_data;
+    this.scenarios = scenarios;
     this.tilesContainer = new PIXI.Container();
     this.canvData.stage.addChild(this.tilesContainer);
     this.character = null;
@@ -20,9 +22,18 @@ class Level {
     this.hearts = [];
     this.target = null;
     this.ui = ui;
+    this.caught = false;
   }
 
   load (callback) {
+
+        this.ui.showModalBinaryChoice(
+          "Well done!",
+          "You jinxed Hitler! Choose his bad luch today!",
+          '<img src="assets/scenarios/'+this.scenarios[0].icon+'">',
+          '<img src="assets/scenarios/'+this.scenarios[1].icon+'">',
+          this.scenarios[0].text,
+          this.scenarios[1].text);
 
     // initiating the grid
     for (var i=0; i<this.canvData.gridX; i++) {
@@ -169,10 +180,8 @@ class Level {
   }
 
   levelSuccesChoice () {
-    this.ui.showModalBinaryChoice(
-      'You caught ' + this.target.name + '! Choose his bad luch today!',
-
-    );
+    console.log("AAAA");
+    this.ui.showModalBinaryChoice('You jinxed ' + this.target.name + '!', 'Choose his bad luck today!');
   }
 
 }

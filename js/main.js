@@ -102,11 +102,13 @@ document.addEventListener("DOMContentLoaded", function() {
       var citizens1 = ldata.citizens;
       var characters1 = ldata.characters;
       var envelements1 = ldata.env_elements;
+      var scenarios1 = ldata.scenarios;
       var level1 = new Level(tiles1,
                             buildings1,
                             citizens1,
                             characters1,
                             envelements1,
+                            scenarios1,
                             canvasData, ui);
       levels.push (level1);
       level1.load();

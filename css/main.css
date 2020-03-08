@@ -111,6 +111,32 @@ body {
   display: none;
 }
 
+.modal-rect {
+  text-align: center;
+}
+
+.modal-rect .tingle-modal-box h1 {
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: white;
+  text-align: center;
+  margin-top:-12%;
+  font-size: 2.5em;
+  color: #171791;
+}
+
+.modal-rect .tingle-modal-box h2 {
+  text-align: center;
+  color: #171791;
+}
+
+.modal-rect .scenario-block img{
+  width: 50%;
+}
+
+.modal-rect .scenario-block{
+  cursor: pointer;
+}
+
 @media only screen and (min-width: 1140px) {
   #home-container {
     width: 50%;
@@ -141,6 +167,10 @@ body {
   .modal-splash .tingle-modal-box .main-message {
     font-size: 1.2em;
     margin-left: 35%;
+  }
+
+  .modal-rect .tingle-modal-box h1 {
+    font-size: 4em;
   }
 
 }
